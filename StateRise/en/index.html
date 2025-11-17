@@ -19,17 +19,21 @@
             <img src="/StateRise/assets/studio_logo.png" alt="The Statecraft Bureau" class="studio-logo rounded-logo">
 
             <!-- Кликабельно → index.html -->
-            <a href="/StateRise/" class="game-title">State Rise: From Ashes</a>
+            <a href="/StateRise/en/" class="game-title">State Rise: From Ashes</a>
         </div>
 
         <nav class="menu">
-            <a href="/StateRise/about/">About</a>
-            <a href="/StateRise/project/">Project</a>
-            <a href="/StateRise/devlog/">Devlog</a>
-            <a href="/StateRise/contacts/">Contacts</a>        
-            <span class="lang-switch">
-                <a href="/StateRise/">RU</a> | <a href="/StateRise/en/">EN</a>
-            </span>
+            <a href="/StateRise/en/about/">About</a>
+            <a href="/StateRise/en/project/">Project</a>
+            <a href="/StateRise/en/devlog/">Devlog</a>
+            <a href="/StateRise/en/contacts/">Contacts</a>        
+            <div class="lang-dropdown">
+                <button class="lang-current">EN ▾</button>
+                <div class="lang-menu">
+                    <a href="/StateRise/">RU</a>
+                    <a href="/StateRise/en/">EN</a>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -99,3 +103,19 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".lang-dropdown");
+    if (!dropdown) return;
+
+    // если нажали на кнопку — переключить
+    if (dropdown.contains(e.target) && e.target.classList.contains("lang-current")) {
+        dropdown.classList.toggle("open");
+        return;
+    }
+
+    // если клик вне — закрыть
+    dropdown.classList.remove("open");
+});
+</script>

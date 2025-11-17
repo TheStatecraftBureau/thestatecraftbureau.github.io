@@ -27,9 +27,13 @@
             <a href="/StateRise/project/">О проекте</a>
             <a href="/StateRise/devlog/">Devlog</a>
             <a href="/StateRise/contacts/">Контакты</a>
-            <span class="lang-switch">
-                <a href="/StateRise/project/">RU</a> | <a href="/StateRise/en/project/">EN</a>
-            </span>
+            <div class="lang-dropdown">
+                <button class="lang-current">RU ▾</button>
+                <div class="lang-menu">
+                    <a href="/StateRise/project/">RU</a>
+                    <a href="/StateRise/en/project/">EN</a>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -55,3 +59,19 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".lang-dropdown");
+    if (!dropdown) return;
+
+    // если нажали на кнопку — переключить
+    if (dropdown.contains(e.target) && e.target.classList.contains("lang-current")) {
+        dropdown.classList.toggle("open");
+        return;
+    }
+
+    // если клик вне — закрыть
+    dropdown.classList.remove("open");
+});
+</script>
