@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>State Rise: From Ashes</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" sizes="32x32">
+    <link rel="stylesheet" href="/StateRise/css/style.css">
+</head>
+
+<body>
+
+    <!-- Фиксированный фоновый PNG -->
+    <div class="global-bg"></div>
+
+    <header class="topbar">
+        <div class="logo">
+            <img src="/StateRise/assets/studio_logo.png" alt="The Statecraft Bureau" class="studio-logo rounded-logo">
+
+            <!-- Кликабельно → index.html -->
+            <a href="/StateRise/" class="game-title">State Rise: From Ashes</a>
+        </div>
+
+        <nav class="menu">
+            <a href="/StateRise/about/">About</a>
+            <a href="/StateRise/project/">Project</a>
+            <a href="/StateRise/devlog/">Devlog</a>
+            <a href="/StateRise/contacts/">Contacts</a>
+            <span class="lang-switch">
+                <a href="/StateRise/devlog/">RU</a> | <a href="/StateRise/en/devlog/">EN</a>
+            </span>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="overlay-box" id="devlog-container">
+            <h1>Devlog</h1>
+            <p>Загружается...</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div>© The Statecraft Bureau, 2025</div>
+        <div class="socials">
+            <a href="https://vk.com/devlogstaterise">VK</a>
+            <a href="https://x.com/StateDevLog">X/Twitter</a>
+            <a href="https://thestatecraftbureau.itch.io/">Itch.io</a>
+        </div>
+    </footer>
+
+    <script>
+        fetch("/StateRise/data/devlog.json")
+            .then(r => r.json())
+            .then(entries => {
+                const c = document.getElementById("devlog-container");
+                c.innerHTML = "<h1>Devlog</h1>";
+                entries.forEach(e => {
+                    c.innerHTML += `
+                        <h2>${e.title}</h2>
+                        <small>${e.date}</small>
+                        <p>${e.text}</p><hr>
+                    `;
+                });
+            })
+            .catch(() => {
+                document.getElementById("devlog-container").innerHTML =
+                    "<h1>Devlog</h1><p>Ошибка загрузки.</p>";
+            });
+    </script>
+</body>
+</html>
