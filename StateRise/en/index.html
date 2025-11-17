@@ -15,6 +15,9 @@
     <div class="global-bg"></div>
 
     <header class="topbar">
+        <button class="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
         <div class="logo">
             <img src="/StateRise/assets/studio_logo.png" alt="The Statecraft Bureau" class="studio-logo rounded-logo">
 
@@ -117,5 +120,23 @@ document.addEventListener("click", function (e) {
 
     // если клик вне — закрыть
     dropdown.classList.remove("open");
+});
+</script>
+
+<script>
+const burger = document.querySelector(".burger");
+const menu = document.querySelector(".menu");
+
+burger.addEventListener("click", () => {
+    burger.classList.toggle("open");
+    menu.classList.toggle("open");
+});
+
+// закрытие меню по клику вне
+document.addEventListener("click", e => {
+    if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        burger.classList.remove("open");
+        menu.classList.remove("open");
+    }
 });
 </script>

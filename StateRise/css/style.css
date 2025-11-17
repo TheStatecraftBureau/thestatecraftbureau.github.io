@@ -11,6 +11,35 @@ html, body
     margin: 0;
 }
 
+/* бургер скрыт на больших экранах */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1200;
+}
+
+.burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #eaeaea;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* мобильное меню (изначально скрыто) */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 /* Фоновое изображение с затемнением через градиент */
 .global-bg {
     position: fixed;
@@ -45,6 +74,7 @@ html, body
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 /* PNG логотип студии */
@@ -226,4 +256,201 @@ body {
 /* Показать меню */
 .lang-dropdown.open .lang-menu {
     display: block;
+}
+
+@media (max-width: 1024px) {
+    .overlay-box {
+        width: 80%;
+        padding: 30px;
+        font-size: 17px;
+    }
+
+    .overlay-box h1 {
+        font-size: 28px;
+    }
+
+    .menu a {
+        margin-left: 18px;
+        font-size: 15px;
+    }
+
+    .topbar {
+        padding: 0 25px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .burger {
+        display: flex;
+        margin-right: auto;
+    }
+
+    .topbar {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .studio-logo {
+        height: 38px;
+        width: 38px;
+    }
+
+    .game-title {
+        font-size: 22px;
+    }
+
+        /* меню становится выпадающим */
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 75%;
+        max-width: 250px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(4px);
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 10px;
+        transform: translateX(-100%);
+        transition: transform 0.35s ease;
+        z-index: 1100;
+    }
+
+    /* меню открыто */
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    /* пункты */
+    .menu a {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        margin: 0;
+    }
+
+    /* иконка бургер → крестик */
+    .burger.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* центральный контейнер */
+    .hero {
+        padding-top: 110px;
+    }
+
+    .overlay-box {
+        width: 92%;
+        padding: 22px;
+        font-size: 16px;
+    }
+
+    .overlay-box p,
+    .overlay-box li {
+        font-size: 16px;
+        line-height: 1.55;
+        text-indent: 0;
+    }
+
+    .overlay-box ul {
+        padding-left: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .burger{
+        display: flex;
+        margin-right: auto;
+    }
+
+    .topbar {
+        padding: 0 10px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .studio-logo {
+        height: 32px;
+        width: 32px;
+    }
+
+    .game-title {
+        font-size: 18px;
+        letter-spacing: 0;
+    }
+
+        /* меню становится выпадающим */
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 70%;
+        max-width: 260px;
+        height: calc(100% - 60px);
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(4px);
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 10px;
+        transform: translateX(-100%);
+        transition: transform 0.35s ease;
+        z-index: 1100;
+    }
+
+    /* меню открыто */
+    .menu.open {
+        transform: translateX(0);
+    }
+
+    /* пункты */
+    .menu a {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        margin: 0;
+    }
+
+    /* иконка бургер → крестик */
+    .burger.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .overlay-box {
+        width: 95%;
+        padding: 18px;
+        font-size: 15px;
+    }
+
+    .overlay-box h1 {
+        font-size: 22px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 }
