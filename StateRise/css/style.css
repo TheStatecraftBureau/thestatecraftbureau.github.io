@@ -277,6 +277,19 @@ body {
     .topbar {
         padding: 0 25px;
     }
+
+    .hero {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 100px;
+        padding-bottom: 40px;
+        min-height: calc(100vh - 140px - 80px); /* хедер + футер */
+        z-index: 2;
+        position: relative;
+    }
 }
 
 @media (max-width: 768px) {
@@ -347,7 +360,16 @@ body {
 
     /* центральный контейнер */
     .hero {
-        padding-top: 110px;
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 80px;
+        padding-bottom: 40px;
+        min-height: calc(100vh - 140px - 80px); /* хедер + футер */
+        z-index: 2;
+        position: relative;
     }
 
     .overlay-box {
@@ -399,12 +421,12 @@ body {
         top: 60px;
         left: 0;
         width: 70%;
-        max-width: 260px;
-        height: calc(100% - 60px);
+        max-width: 175px;
+        height: 100vh;
         background: rgba(10, 10, 10, 0.95);
         backdrop-filter: blur(4px);
         flex-direction: column;
-        padding: 20px 0;
+        padding-top: 10px;
         gap: 10px;
         transform: translateX(-100%);
         transition: transform 0.35s ease;
@@ -452,5 +474,18 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 10px;
+    }
+
+    .hero {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 70px;
+        padding-bottom: 40px;
+        min-height: calc(100vh - 140px - 80px); /* хедер + футер */
+        z-index: 2;
+        position: relative;
     }
 }
