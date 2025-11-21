@@ -180,6 +180,12 @@ body {
     font-size: 18px;
 }
 
+.overlay-box ol {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-left: 60px; /* отступ слева для маркеров */
+}
+
 /* Футер */
 .footer {
     width: 100%;
