@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>State Rise: From Ashes</title>
+
+    <title>Контакты — The Statecraft Bureau | State Rise: From Ashes</title>
+
     <link rel="icon" type="image/png" href="../../favicon.png" sizes="32x32">
     <link rel="stylesheet" href="/StateRise/css/style.css">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Statecraft Bureau",
+    "url": "https://thestatecraftbureau.github.io/StateRise/",
+    "logo": "https://thestatecraftbureau.github.io/StateRise/assets/studio_logo.png",
+    "sameAs": [
+        "https://vk.com/devlogstaterise",
+        "https://x.com/StateDevLog",
+        "https://thestatecraftbureau.itch.io",
+        "https://t.me/TheStatecraftBureau"
+    ]
+    }
+    </script>
+    <meta name="description"
+      content="State Rise: From Ashes — стратегическая RTS о развитии государства, экономике, инфраструктуре, геополитике и системных решениях. Проект студии The Statecraft Bureau.">
+    <link rel="canonical" href="https://thestatecraftbureau.github.io/StateRise/contacts/">
 </head>
 
 <body>
-
-    <!-- Фиксированный фоновый PNG -->
     <div class="global-bg"></div>
 
     <header class="topbar">
@@ -21,7 +38,6 @@
         <div class="logo">
             <img src="/StateRise/assets/studio_logo.png" alt="The Statecraft Bureau" class="studio-logo rounded-logo">
 
-            <!-- Кликабельно → index.html -->
             <a href="/StateRise/" class="game-title">State Rise: From Ashes</a>
         </div>
 
@@ -60,39 +76,37 @@
         </div>
     </footer>
 
+    <script>
+    document.addEventListener("click", function (e) {
+        const dropdown = document.querySelector(".lang-dropdown");
+        if (!dropdown) return;
+
+        if (dropdown.contains(e.target) && e.target.classList.contains("lang-current")) {
+            dropdown.classList.toggle("open");
+            return;
+        }
+
+        dropdown.classList.remove("open");
+    });
+    </script>
+
+    <script>
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".menu");
+
+    burger.addEventListener("click", () => {
+        burger.classList.toggle("open");
+        menu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", e => {
+        if (!menu.contains(e.target) && !burger.contains(e.target)) {
+            burger.classList.remove("open");
+            menu.classList.remove("open");
+        }
+    });
+    </script>
+
 </body>
 </html>
 
-<script>
-document.addEventListener("click", function (e) {
-    const dropdown = document.querySelector(".lang-dropdown");
-    if (!dropdown) return;
-
-    // если нажали на кнопку — переключить
-    if (dropdown.contains(e.target) && e.target.classList.contains("lang-current")) {
-        dropdown.classList.toggle("open");
-        return;
-    }
-
-    // если клик вне — закрыть
-    dropdown.classList.remove("open");
-});
-</script>
-
-<script>
-const burger = document.querySelector(".burger");
-const menu = document.querySelector(".menu");
-
-burger.addEventListener("click", () => {
-    burger.classList.toggle("open");
-    menu.classList.toggle("open");
-});
-
-// закрытие меню по клику вне
-document.addEventListener("click", e => {
-    if (!menu.contains(e.target) && !burger.contains(e.target)) {
-        burger.classList.remove("open");
-        menu.classList.remove("open");
-    }
-});
-</script>
