@@ -1,11 +1,48 @@
-https://thestatecraftbureau.github.io/
-https://thestatecraftbureau.github.io/StateRise/
-https://thestatecraftbureau.github.io/StateRise/about/
-https://thestatecraftbureau.github.io/StateRise/contacts/
-https://thestatecraftbureau.github.io/StateRise/devlog/
-https://thestatecraftbureau.github.io/StateRise/project/
-https://thestatecraftbureau.github.io/StateRise/en/
-https://thestatecraftbureau.github.io/StateRise/en/about/
-https://thestatecraftbureau.github.io/StateRise/en/contacts/
-https://thestatecraftbureau.github.io/StateRise/en/devlog/
-https://thestatecraftbureau.github.io/StateRise/en/project/
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/about/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/project/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/devlog/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/contacts/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/en/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/en/about/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/en/project/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/en/devlog/</loc>
+  </url>
+
+  <url>
+    <loc>https://thestatecraftbureau.github.io/StateRise/en/contacts/</loc>
+  </url>
+
+</urlset>
