@@ -57,15 +57,8 @@
     </header>
 
     <main class="hero">
-        <div class="overlay-box" id="devlog-container">
-            <h1>
-                Devlog
-            </h1>
-            <p>
-                Этот раздел находится в разработке. Скоро всё будет 😉
-            </p>
-            <!-- <h1>Devlog</h1>
-            <p>Загружается...</p> -->
+        <div class="overlay-box" id="devlog-list">
+            <h1>Devlog</h1>
         </div>
     </main>
 
@@ -79,26 +72,29 @@
         </div>
     </footer>
 
-    <!-- <script>
-        fetch("/StateRise/data/devlog.json")
-            .then(r => r.json())
-            .then(entries => {
-                const c = document.getElementById("devlog-container");
-                c.innerHTML = "<h1>Devlog</h1>";
-                entries.forEach(e => {
-                    c.innerHTML += `
-                        <h2>${e.title}</h2>
+    <script>
+    fetch("/StateRise/data/devlog.json")
+        .then(r => r.json())
+        .then(entries => {
+            const container = document.getElementById("devlog-list");
+            
+            entries.reverse().forEach(e => {
+                container.innerHTML += `
+                    <div class="devlog-entry">
+                        <h2>
+                            <a href="/StateRise/devlog/post.html?id=${e.id}">
+                                ${e.title}
+                            </a>
+                        </h2>
                         <small>${e.date}</small>
-                        <p>${e.text}</p><hr>
-                    `;
-                });
-            })
-            .catch(() => {
-                document.getElementById("devlog-container").innerHTML =
-                    "<h1>Devlog</h1><p>Ошибка загрузки.</p>";
+                        <p>${e.preview}</p>
+                    </div>
+                    <hr>
+                `;
             });
-    </script> -->
-    
+        });
+    </script>
+
     <script>
     document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".lang-dropdown");

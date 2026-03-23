@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Devlog — State Rise: From Ashes | The Statecraft Bureau</title>
-    <link rel="icon" type="image/png" href="../../../favicon.png" sizes="32x32">
-    <link rel="stylesheet" href="/StateRise/css/style.css">
 
+    <title>Пост devlog разработки — State Rise: From Ashes | The Statecraft Bureau</title>
+
+    <link rel="icon" type="image/png" href="../../favicon.png" sizes="32x32">
+    <link rel="stylesheet" href="/StateRise/css/style.css">
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -24,13 +24,11 @@
     }
     </script>
     <meta name="description"
-      content="State Rise: From Ashes is a strategic RTS about state development, economics, infrastructure, geopolitics, and systemic solutions. Developed by The Statecraft Bureau.">
-
-    <link rel="canonical" href="https://thestatecraftbureau.github.io/StateRise/en/devlog">
+      content="State Rise: From Ashes — стратегическая RTS о развитии государства, экономике, инфраструктуре, геополитике и системных решениях. Проект студии The Statecraft Bureau.">
+    <link rel="canonical" href="https://thestatecraftbureau.github.io/StateRise/devlog/">
 </head>
 
 <body>
-
     <div class="global-bg"></div>
 
     <header class="topbar">
@@ -40,16 +38,16 @@
         <div class="logo">
             <img src="/StateRise/assets/studio_logo.png" alt="The Statecraft Bureau" class="studio-logo rounded-logo">
 
-            <a href="/StateRise/en" class="game-title">State Rise: From Ashes</a>
+            <a href="/StateRise/" class="game-title">State Rise: From Ashes</a>
         </div>
 
         <nav class="menu">
-            <a href="/StateRise/en/about/">About developer</a>
-            <a href="/StateRise/en/project/">About project</a>
-            <a href="/StateRise/en/devlog/">Devlog</a>
-            <a href="/StateRise/en/contacts/">Contacts</a>    
+            <a href="/StateRise/about/">О разработчике</a>
+            <a href="/StateRise/project/">О проекте</a>
+            <a href="/StateRise/devlog/">Devlog</a>
+            <a href="/StateRise/contacts/">Контакты</a>
             <div class="lang-dropdown">
-                <button class="lang-current">EN ▾</button>
+                <button class="lang-current">RU ▾</button>
                 <div class="lang-menu">
                     <a href="/StateRise/devlog/">RU</a>
                     <a href="/StateRise/en/devlog/">EN</a>
@@ -59,7 +57,7 @@
     </header>
 
     <main class="hero">
-        <div class="overlay-box" id="devlog-list">
+        <div class="overlay-box" id="post-container">
             <h1>Devlog</h1>
         </div>
     </main>
@@ -74,30 +72,31 @@
         </div>
     </footer>
 
-
     <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
     fetch("/StateRise/data/devlog.json")
         .then(r => r.json())
         .then(entries => {
-            const container = document.getElementById("devlog-list");
-            
-            entries.reverse().forEach(e => {
-                container.innerHTML += `
-                    <div class="devlog-entry">
-                        <h2>
-                            <a href="/StateRise/en/devlog/post.html?id=${e.id}">
-                                ${e.title}
-                            </a>
-                        </h2>
-                        <small>${e.date}</small>
-                        <p>${e.preview}</p>
-                    </div>
-                    <hr>
-                `;
-            });
+            const post = entries.find(e => e.id === id);
+            const container = document.getElementById("post-container");
+
+            if (!post) {
+                container.innerHTML = "<p>Запись не найдена</p>";
+                return;
+            }
+
+            container.innerHTML = `
+                <h1>${post.title}</h1>
+                <small>${post.date}</small>
+                <div class="post-content">
+                    ${post.content}
+                </div>
+            `;
         });
     </script>
-    
+
     <script>
     document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".lang-dropdown");
@@ -121,6 +120,7 @@
         menu.classList.toggle("open");
     });
 
+    // закрытие меню по клику вне
     document.addEventListener("click", e => {
         if (!menu.contains(e.target) && !burger.contains(e.target)) {
             burger.classList.remove("open");
@@ -128,5 +128,6 @@
         }
     });
     </script>
+
 </body>
 </html>

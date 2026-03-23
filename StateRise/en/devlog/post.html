@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Devlog — State Rise: From Ashes | The Statecraft Bureau</title>
+    <title>Post of devlog — State Rise: From Ashes | The Statecraft Bureau</title>
     <link rel="icon" type="image/png" href="../../../favicon.png" sizes="32x32">
     <link rel="stylesheet" href="/StateRise/css/style.css">
 
@@ -59,7 +59,7 @@
     </header>
 
     <main class="hero">
-        <div class="overlay-box" id="devlog-list">
+        <div class="overlay-box" id="post-container">
             <h1>Devlog</h1>
         </div>
     </main>
@@ -74,31 +74,32 @@
         </div>
     </footer>
 
-
     <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
     fetch("/StateRise/data/devlog.json")
         .then(r => r.json())
         .then(entries => {
-            const container = document.getElementById("devlog-list");
-            
-            entries.reverse().forEach(e => {
-                container.innerHTML += `
-                    <div class="devlog-entry">
-                        <h2>
-                            <a href="/StateRise/en/devlog/post.html?id=${e.id}">
-                                ${e.title}
-                            </a>
-                        </h2>
-                        <small>${e.date}</small>
-                        <p>${e.preview}</p>
-                    </div>
-                    <hr>
-                `;
-            });
+            const post = entries.find(e => e.id === id);
+            const container = document.getElementById("post-container");
+
+            if (!post) {
+                container.innerHTML = "<p>Запись не найдена</p>";
+                return;
+            }
+
+            container.innerHTML = `
+                <h1>${post.title}</h1>
+                <small>${post.date}</small>
+                <div class="post-content">
+                    ${post.content}
+                </div>
+            `;
         });
     </script>
-    
-    <script>
+
+        <script>
     document.addEventListener("click", function (e) {
         const dropdown = document.querySelector(".lang-dropdown");
         if (!dropdown) return;
@@ -128,5 +129,6 @@
         }
     });
     </script>
+    
 </body>
 </html>
