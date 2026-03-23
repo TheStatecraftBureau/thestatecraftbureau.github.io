@@ -4,7 +4,8 @@
     "title": "Обновление транспортной системы",
     "date": "2026-03-20",
     "preview": "Переработана логистика и поведение транспорта.",
-    "content": "<p>Полный текст записи...</p>"
+    "cover": "/StateRise/assets/devlog/transport.jpg",
+    "content": "<p>Транспортная система была полностью переработана.</p><h3>Основные изменения</h3><ul><li>Новая логика маршрутов</li><li>Оптимизация загрузки</li></ul><img src='/StateRise/assets/devlog/transport_detail.jpg' class='devlog-image'><p>Теперь транспорт реагирует на изменения среды.</p>"
   },
   {
     "id": "economy-rework",

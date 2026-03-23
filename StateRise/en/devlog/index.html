@@ -84,8 +84,10 @@
             entries.reverse().forEach(e => {
                 container.innerHTML += `
                     <div class="devlog-entry">
+                        ${e.cover ? `<img src="${e.cover}" class="devlog-cover">` : ""}
+
                         <h2>
-                            <a href="/StateRise/en/devlog/post.html?id=${e.id}">
+                            <a href="/StateRise/devlog/post.html?id=${e.id}">
                                 ${e.title}
                             </a>
                         </h2>
