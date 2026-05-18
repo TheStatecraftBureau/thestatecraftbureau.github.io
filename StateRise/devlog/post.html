@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Контакты — The Statecraft Bureau | State Rise: From Ashes</title>
+    <title>Пост devlog разработки — State Rise: From Ashes | The Statecraft Bureau</title>
 
     <link rel="icon" type="image/png" href="../../favicon.png" sizes="32x32">
     <link rel="stylesheet" href="/StateRise/css/style.css">
@@ -25,7 +25,7 @@
     </script>
     <meta name="description"
       content="State Rise: From Ashes — стратегическая RTS о развитии государства, экономике, инфраструктуре, геополитике и системных решениях. Проект студии The Statecraft Bureau.">
-    <link rel="canonical" href="https://thestatecraftbureau.github.io/StateRise/contacts/">
+    <link rel="canonical" href="https://thestatecraftbureau.github.io/StateRise/devlog/">
 </head>
 
 <body>
@@ -49,20 +49,16 @@
             <div class="lang-dropdown">
                 <button class="lang-current">RU ▾</button>
                 <div class="lang-menu">
-                    <a href="/StateRise/contacts/">RU</a>
-                    <a href="/StateRise/en/contacts/">EN</a>
+                    <a href="/StateRise/devlog/">RU</a>
+                    <a href="/StateRise/en/devlog/">EN</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main class="hero">
-        <div class="overlay-box">
-            <h1>Контакты</h1>
-            <p>Gmail: thestatecraftbureau@gmail.com</p>
-            <p>VK: vk.com/devlogstaterise</p>
-            <p>X/Twitter: x.com/StateDevLog</p>
-            <p>Telegram: t.me/TheStatecraftBureau</p>
+        <div class="overlay-box" id="post-container">
+            <h1>Devlog</h1>
         </div>
     </main>
 
@@ -75,6 +71,103 @@
             <a href="https://t.me/TheStatecraftBureau">Telegram</a>
         </div>
     </footer>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+    fetch("/StateRise/data/devlog.json")
+        .then(r => r.json())
+        .then(entries => {
+
+            const post = entries.find(e => e.id === id);
+            const container = document.getElementById("post-container");
+
+            if (!post) {
+                container.innerHTML = "<p>Запись не найдена</p>";
+                return;
+            }
+
+            let content = post.content || "";
+            const images = post.images || [];
+
+            // разбиваем HTML по </p>
+            let parts = content.split("</p>");
+
+            // вставляем изображения между абзацами
+            let finalContent = "";
+
+            parts.forEach((part, index) => {
+
+                if (part.trim() !== "") {
+                    finalContent += part + "</p>";
+                }
+
+                // вставка изображения после абзаца
+                if (images[index]) {
+                    finalContent += `
+                        <img 
+                            src="${images[index]}"
+                            class="devlog-post-image"
+                            alt="${post.title}"
+                        >
+                    `;
+                }
+            });
+
+            container.innerHTML = `
+                <div class="devlog-header">
+
+                    <div class="devlog-header-text">
+
+                        <h1>${post.title}</h1>
+
+                        <small>${post.date}</small>
+
+                    </div>
+
+                    ${
+                        post.cover
+                        ? `
+                        <img 
+                            src="${post.cover}"
+                            class="devlog-main-cover"
+                            alt="${post.title}"
+                        >
+                        `
+                        : ""
+                    }
+
+                </div>
+
+                <div class="devlog-layout">
+
+                    <div class="post-content">
+                        ${post.content}
+                    </div>
+
+                    ${
+                        images.length > 0
+                        ? `
+                        <aside class="devlog-sidebar">
+
+                            ${images.map(img => `
+                                <img
+                                    src="${img}"
+                                    class="devlog-side-image"
+                                    alt="${post.title}"
+                                >
+                            `).join("")}
+
+                        </aside>
+                        `
+                        : ""
+                    }
+
+                </div>
+            `;
+        });
+    </script>
 
     <script>
     document.addEventListener("click", function (e) {
@@ -99,6 +192,7 @@
         menu.classList.toggle("open");
     });
 
+    // закрытие меню по клику вне
     document.addEventListener("click", e => {
         if (!menu.contains(e.target) && !burger.contains(e.target)) {
             burger.classList.remove("open");
@@ -109,4 +203,3 @@
 
 </body>
 </html>
-
