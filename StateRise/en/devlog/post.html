@@ -78,7 +78,7 @@
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    fetch("/StateRise/data/devlog.json")
+    fetch("/StateRise/en/data/devlog.json")
         .then(r => r.json())
         .then(entries => {
             const post = entries.find(e => e.id === id);

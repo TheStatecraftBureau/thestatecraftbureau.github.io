@@ -81,16 +81,27 @@
             entries.reverse().forEach(e => {
                 container.innerHTML += `
                     <div class="devlog-entry">
-                        ${e.cover ? `<img src="${e.cover}" class="devlog-cover">` : ""}
 
-                        <h2>
-                            <a href="/StateRise/devlog/post.html?id=${e.id}">
-                                ${e.title}
-                            </a>
-                        </h2>
-                        <small>${e.date}</small>
-                        <p>${e.preview}</p>
+                        ${e.cover ? `
+                        <a href="/StateRise/devlog/post.html?id=${e.id}" class="devlog-image-link">
+                            <img src="${e.cover}" class="devlog-cover" alt="${e.title}">
+                        </a>
+                        ` : ""}
+
+                        <div class="devlog-content">
+                            <h2>
+                                <a href="/StateRise/devlog/post.html?id=${e.id}">
+                                    ${e.title}
+                                </a>
+                            </h2>
+
+                            <small>${e.date}</small>
+
+                            <p>${e.preview}</p>
+                        </div>
+
                     </div>
+
                     <hr>
                 `;
             });
