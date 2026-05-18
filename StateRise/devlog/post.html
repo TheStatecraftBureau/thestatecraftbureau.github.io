@@ -116,20 +116,54 @@
             });
 
             container.innerHTML = `
-                <h1>${post.title}</h1>
+                <div class="devlog-header">
 
-                <small>${post.date}</small>
+                    <div class="devlog-header-text">
 
-                ${post.cover ? `
-                    <img 
-                        src="${post.cover}"
-                        class="devlog-main-cover"
-                        alt="${post.title}"
-                    >
-                ` : ""}
+                        <h1>${post.title}</h1>
 
-                <div class="post-content">
-                    ${finalContent}
+                        <small>${post.date}</small>
+
+                    </div>
+
+                    ${
+                        post.cover
+                        ? `
+                        <img 
+                            src="${post.cover}"
+                            class="devlog-main-cover"
+                            alt="${post.title}"
+                        >
+                        `
+                        : ""
+                    }
+
+                </div>
+
+                <div class="devlog-layout">
+
+                    <div class="post-content">
+                        ${post.content}
+                    </div>
+
+                    ${
+                        images.length > 0
+                        ? `
+                        <aside class="devlog-sidebar">
+
+                            ${images.map(img => `
+                                <img
+                                    src="${img}"
+                                    class="devlog-side-image"
+                                    alt="${post.title}"
+                                >
+                            `).join("")}
+
+                        </aside>
+                        `
+                        : ""
+                    }
+
                 </div>
             `;
         });
