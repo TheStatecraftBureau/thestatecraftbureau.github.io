@@ -74,11 +74,12 @@
 
     <script>
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+        const id = params.get("id");
 
     fetch("/StateRise/data/devlog.json")
         .then(r => r.json())
         .then(entries => {
+
             const post = entries.find(e => e.id === id);
             const container = document.getElementById("post-container");
 
@@ -87,11 +88,48 @@
                 return;
             }
 
+            let content = post.content || "";
+            const images = post.images || [];
+
+            // разбиваем HTML по </p>
+            let parts = content.split("</p>");
+
+            // вставляем изображения между абзацами
+            let finalContent = "";
+
+            parts.forEach((part, index) => {
+
+                if (part.trim() !== "") {
+                    finalContent += part + "</p>";
+                }
+
+                // вставка изображения после абзаца
+                if (images[index]) {
+                    finalContent += `
+                        <img 
+                            src="${images[index]}"
+                            class="devlog-post-image"
+                            alt="${post.title}"
+                        >
+                    `;
+                }
+            });
+
             container.innerHTML = `
                 <h1>${post.title}</h1>
+
                 <small>${post.date}</small>
+
+                ${post.cover ? `
+                    <img 
+                        src="${post.cover}"
+                        class="devlog-main-cover"
+                        alt="${post.title}"
+                    >
+                ` : ""}
+
                 <div class="post-content">
-                    ${post.content}
+                    ${finalContent}
                 </div>
             `;
         });

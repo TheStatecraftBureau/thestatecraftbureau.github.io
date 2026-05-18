@@ -4,7 +4,12 @@
     "title": "Introducing State Rise: From Ashes",
     "date": "29.07.2025",
     "preview": "An introduction to the studio and a grand strategy project about building a state from scratch.",
-    "cover": "/StateRise/assets/devlog/intro.png",
+    "cover": "/StateRise/assets/devlog/intro.png",  
+    "images": [
+      "/StateRise/assets/devlog/transport_1.png",
+      "/StateRise/assets/devlog/transport_2.png",
+      "/StateRise/assets/devlog/transport_3.png"
+    ],
     "content": "<p>Greetings!</p><p>We are <strong>The Statecraft Bureau</strong>, an indie studio currently developing the grand strategy project <strong>State Rise: From Ashes</strong> — a game about building and developing a state from the ground up in the harsh world of the 20th century.</p><p>This is not just a city builder or an economic simulator. <strong>State Rise</strong> is a deep state management simulation where the player starts with an empty territory, a limited budget, and basic infrastructure. Over time, opportunities emerge for developing industry, logistics, foreign trade, population management, diplomacy, and military campaigns.</p><p>Inspired by projects such as Workers & Resources, Victoria, and Kaiserpunk, we aim to combine their strongest aspects while expanding the depth of gameplay. The core focus is state management on every level — from local decisions to influencing the global political stage.</p><h3>Key Features</h3><ul><li>Complete start from scratch with manual infrastructure planning;</li><li>Complex production chains and an advanced economy;</li><li>Multi-layered logistics: from railways to retail distribution;</li><li>Foreign trade, diplomacy, and pressure from major powers;</li><li>Gradual scaling from a settlement to a fully developed state;</li><li>Adaptive complexity aimed both at thoughtful players who enjoy micromanagement and more casual audiences.</li></ul><p>At the current stage, several major development milestones have already been completed: internal politics, diplomacy and international trade systems, the foundation of the economy and production chains, as well as city-building mechanics. Work is currently focused on transportation and logistics, including route optimization and cargo behavior systems.</p><p>The next major stage will be military campaigns, after which development focus will shift toward state AI and balancing technological progression.</p><p>The project is being developed without external funding or a marketing budget. The main resources behind it are time and consistent work. If the project interests you, you can support it through subscriptions, sharing, or feedback.</p>"
   },
   {
